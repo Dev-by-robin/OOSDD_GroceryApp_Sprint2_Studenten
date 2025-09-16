@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+      - develop
+      - hotfix
       - infra/runner-toevoegen
   pull_request:
     branches:
