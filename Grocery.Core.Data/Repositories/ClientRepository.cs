@@ -1,6 +1,7 @@
 ﻿
 using Grocery.Core.Interfaces.Repositories;
 using Grocery.Core.Models;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Grocery.Core.Data.Repositories
 {
@@ -19,12 +20,27 @@ namespace Grocery.Core.Data.Repositories
 
         public Client? Get(string email)
         {
-            return clientList[0];
+
+            foreach (Client client in clientList)
+            {
+                if (client._emailAddress == email)
+                {
+                    return client; // gevonden
+                }
+            }
+            return null; // niks gevonden
         }
 
         public Client? Get(int id)
         {
-            return clientList[0];
+            foreach (Client client in clientList)
+            {
+                if (client._id == id)
+                {
+                    return client; // gevonden
+                }
+            }
+            return null; // niks gevonden
         }
 
         public List<Client> GetAll()
